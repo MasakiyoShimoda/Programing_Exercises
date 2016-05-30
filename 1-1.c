@@ -22,13 +22,14 @@ int main(int argc, const char * argv[]) {
 }
 
 double setProduct(productNumber){
-    int i, productValue[20] = {0}, total;
+    int i, productValue[20] = {0}, 
+    double total;
     for (i = 0; i < productNumber; i++) {
         printf("商品%d:", i + 1);
         scanf("%d", &productValue[i]);
         total += productValue[i];
     }
-    printf("計(税別):%d", total);
+    printf("計(税別):%.d", total);
     return total;
 }
 
@@ -36,6 +37,6 @@ double setProduct(productNumber){
 int addTax(tax, totalProductValue){
     tax = tax * 0.01 + 1.0;
     totalProductValue *= tax;
-    printf("計(税別):%d", totalProductValue);
+    printf("計(税別):%lf", totalProductValue);
     return totalProductValue;
 }
