@@ -50,7 +50,7 @@ int main(int argc, const char * argv[]) {
             other++;
         j++;
     }
-    if (alpha == 0 && digit == 0 && symbol == 0 && other != 0) {
+    if (alpha == 0 || digit == 0 || symbol || 0 && other != 0) {
         printf("FALSE\n");
         return 0;
     } else {
