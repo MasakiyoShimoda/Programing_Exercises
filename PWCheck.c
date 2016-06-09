@@ -30,7 +30,7 @@ int main(int argc, const char * argv[]) {
     while(PASS[i] != '\0')
         i++;
     
-    if (i <= UNDER_CHAR){
+    if (i < UNDER_CHAR){
         printf("FALSE\n");
         return 0;
     }else if(i > OVER_CHAR){
