@@ -9,6 +9,10 @@
 #include <stdio.h>
 #include <assert.h>
 
+#define FEBUARY_DAYS 28
+#define SHORT_DAYS 30
+#define LONG_DAYS 31
+
 int daysForManth(int);
 
 int main(int argc, const char * argv[]) {
@@ -20,7 +24,9 @@ int main(int argc, const char * argv[]) {
     assert(daysForManth(9) == 30);
     assert(daysForManth(11) == 30);
     assert(daysForManth(12) == 31);
-    assert(daysForManth(13) == 0);
+    assert(daysForManth('a') == 0);
+    assert(daysForManth('&') == 0);
+    assert(daysForManth(' ') == 0);
     printf("All Passed\n");
     
     return 0;
@@ -28,16 +34,16 @@ int main(int argc, const char * argv[]) {
 
 int daysForManth(month){
     int shortManth [] = {4,6,9,11};
-    int i, days = 31;
+    int i, days = LONG_DAYS;
     if(month == 0 || month > 12)
         days = 0;
     
     if (month == 2)
-        days = 28;
+        days = FEBUARY_DAYS;
     
     for (i = 0; i < 4; i++) {
         if (month == shortManth[i]) {
-            days = 30;
+            days = SHORT_DAYS;
             break;
         }
     }
