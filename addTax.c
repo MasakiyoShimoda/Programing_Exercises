@@ -8,15 +8,14 @@
 
 #include <stdio.h>
 
-#define TAX 1.08;
-#define PRODUCT_NUMVER 3;
+#define TAX 1.08
+#define PRODUCT_NUMVER 3
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    int i, total = 0, productNum = PRODUCT_NUMVER;
-    double tax = TAX;
+    int i, total = 0;
     int productValue[20] = {0};
-    for (i = 0; i < productNum; i++) {
+    for (i = 0; i < PRODUCT_NUMVER; i++) {
         printf("商品%d:", i+1);
         scanf("%d", &productValue[i]);
         for (; productValue[i] > 100000 || productValue[i] < 0; ) {
@@ -27,9 +26,8 @@ int main(int argc, const char * argv[]) {
         total += productValue[i];
     }
     printf("計（税別）:%d\n", total);
-    printf("税率: %.lf％\n", tax * 100 - 100);
-    printf("計（税込）:%.lf\n", (double)total * tax);
+    printf("税率: %.lf％\n", TAX * 100 - 100);
+    printf("計（税込）:%.lf\n", (double)total * TAX);
     
     return 0;
 }
-
