@@ -21,7 +21,6 @@ int main(int argc, const char * argv[]) {
         year = month = day = -1;
         printf( "Input 年月日(yyyy/mm/dd）: " );
         scanf("%d/%d/%d", &year, &month, &day);
-        printf("%d%d%d", year, month, day);
     }
     timeinfo.tm_year = year - 1900;
     timeinfo.tm_mon  = month - 1;
