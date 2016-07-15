@@ -30,7 +30,7 @@ int main(int argc, const char * argv[]) {
     timeinfo.tm_sec  = 0;
     time_t ct = mktime(&timeinfo);
     
-    printf("%d年%d月%d日は%sです(mktime)\n",year ,month, day,dayname[timeinfo.tm_mday]);
+    printf("%d年%d月%d日は%sです(mktime)\n",year ,month, day,dayname[timeinfo.tm_wday]);
     printf("%d年%d月%d日は%sです(zeller)\n",year ,month, day, dayname[dayofweek_zeller(year, month, day)]);
     return 0;
 }
