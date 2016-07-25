@@ -61,7 +61,7 @@ void printTable(int i, int table[DEPTH][WIDTH + 1][HEIGHT + 1]){
                 /*縦合計*/
                 table[l][WIDTH][k] += table[l][j][k];
                 /*すべての合計*/
-                table[l][WIDTH][HEIGHT] += table[l][k][k];
+                table[l][WIDTH][HEIGHT] += table[l][j][k];
             }
         }
     }
