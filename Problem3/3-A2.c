@@ -28,6 +28,7 @@ int main(int argc, const char * argv[]) {
     srandom((unsigned int)time(NULL));
     
     puts("Find the missing number!");
+    printf("Time limit : %d.0[s]", TIME_LIMIT);
     count();
     right = question(x, xlen);
     
@@ -71,7 +72,9 @@ int question(int *data, int len){
                 printf("Wrong! Try again : ");
             scanf("%d", &number);
         }
+        puts("Correct!");
         end = microtime();
+        printf(">> TIME : %.2lf[s]\n", end - start);
     }
     return i;
     
