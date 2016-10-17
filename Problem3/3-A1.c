@@ -29,7 +29,7 @@ int main(int argc, const char * argv[]) {
     srandom((unsigned int)time(NULL));
     
     puts("Find the missing number!");
-    // count();
+    count();
     start = microtime();
     question(x, xlen);
     end = microtime();
