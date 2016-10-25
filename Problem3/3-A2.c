@@ -28,8 +28,8 @@ int main(int argc, const char * argv[]) {
     srandom((unsigned int)time(NULL));
     
     puts("Find the missing number!");
-    printf("Time limit : %d.0[s]", TIME_LIMIT);
-    count();
+    printf("Time limit : %d.0[s]\n", TIME_LIMIT);
+    //count();
     right = question(x, xlen);
     
     printf("Time is up!\nYou've got %d points\n", right);
@@ -59,7 +59,7 @@ double microtime(void){
 
 int question(int *data, int len){
     double end = 0, start = microtime();
-    int i, que, number = -1;
+    int i, que, number = -1, flag = 0;
     for (i = 0; TIME_LIMIT > end - start; i++) {
         que = random()%len;
         printf("[Q%d] ", i+1);
@@ -68,11 +68,17 @@ int question(int *data, int len){
         printf(": ");
         scanf("%d", &number);
         while (number != que) {
-            if (number != que)
-                printf("Wrong! Try again : ");
-            scanf("%d", &number);
+            printf("Wrong! Try again : ");
+            end = microtime();
+            if (TIME_LIMIT < end - start){
+                flag = 1;
+                number = que;
+                puts(" ");
+            }else
+                scanf("%d", &number);
         }
-        puts("Correct!");
+        if (flag != 1)
+            puts("Correct!");
         end = microtime();
         printf(">> TIME : %.2lf[s]\n", end - start);
     }
