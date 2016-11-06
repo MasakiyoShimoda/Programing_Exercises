@@ -74,7 +74,6 @@ void question(int *data, int len){
             scanf("%d", &number);
         }
     }
-    
 }
 
 void show(int *data, int len, int que){
@@ -93,7 +92,6 @@ void swap(int *data, int len, int x, int y){
         puts("範囲外の要素を参照しようとしました.交換できません.");
         return;
     }
-    
     int buff;
     buff = data[x];
     data[x] = data[y];
@@ -102,12 +100,8 @@ void swap(int *data, int len, int x, int y){
 
 void shuffle(int *data, int len){
     int i, j;
-    
     for(i = 0; i < len; i ++){
-        do{
-            j = rand()%len;
-        }while(i == j);
+        j = rand()%len;
         swap(data, len, i, j);
     }
-    
 }
