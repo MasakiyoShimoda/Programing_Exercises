@@ -29,7 +29,7 @@ int main(int argc, const char * argv[]) {
     
     puts("Find the missing number!");
     printf("Time limit : %d.0[s]\n", TIME_LIMIT);
-    //count();
+    count();
     right = question(x, xlen);
     
     printf("Time is up!\nYou've got %d points\n", right);
@@ -102,7 +102,6 @@ void swap(int *data, int len, int x, int y){
         puts("範囲外の要素を参照しようとしました.交換できません.");
         return;
     }
-    
     int buff;
     buff = data[x];
     data[x] = data[y];
@@ -118,5 +117,4 @@ void shuffle(int *data, int len){
         }while(i == j);
         swap(data, len, i, j);
     }
-    
 }
