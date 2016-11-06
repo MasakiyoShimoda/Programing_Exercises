@@ -36,7 +36,7 @@ int main(int argc, const char * argv[]) {
     puts("4 8 7　　5,8,9をすべてかけた数、360が答えになります。");
     puts("6 1 9　　縦横斜めの３つの数字を掛けて一番大きな数字が答えとなります。");
     puts("-----------------------------------------------");
-    //count();
+    count();
     right = question(x, xlen);
     
     printf("Time is up!\nYou've got %d points\n", right);
