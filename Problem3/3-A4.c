@@ -24,7 +24,8 @@ int main(int argc, const char * argv[]) {
     // insert code here...
     FILE *fp;
     int i = 0, j;
-    char word[20], **jp_word, **en_word;
+    char (*jp_word)[WORDLEN], (*en_word)[WORDLEN];
+    char word[20];
     srand((unsigned int)time(NULL));
     
     /*ファイルを開く*/
@@ -38,27 +39,19 @@ int main(int argc, const char * argv[]) {
         i++;
     
     /*Wordのメモリ確保*/
-    en_word = (char **)malloc(sizeof(char) * WORDLEN);
-    jp_word = (char **)malloc(sizeof(char) * WORDLEN);
-    for (j = 0; j < WORDLEN; j++) {
-        en_word[j] = (char *)malloc(sizeof(char) * i/2);
-        jp_word[j] = (char *)malloc(sizeof(char) * i/2);
-    }
+    en_word = (char (*)[WORDLEN])malloc(i/2 * WORDLEN);
+    jp_word = (char (*)[WORDLEN])malloc(i/2 * WORDLEN);
 
     
       printf("データの数:%d", i/2);
     
-    for (j = 0 ; j < WORDLEN ; j++) {
-        free(en_word[j]);
-        free(jp_word[j]);
-    }
     free(en_word);
     free(jp_word);
     fclose(fp);
     
     return 0;
 }
-
+/*
 void shuffle(int *data, int len){
     int i, j;
     
@@ -79,5 +72,5 @@ void swap(int *data, int len, int x, int y){
     data[x] = data[y];
     data[y] = buff;
 }
-
+*/
 
