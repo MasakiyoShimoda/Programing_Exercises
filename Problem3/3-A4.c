@@ -13,8 +13,8 @@
 #include <sys/time.h>
 #include <string.h>
 
-#define PATH /home/lecture/hi-3proen/ejwords.dat
-#define PATH_MAC /Users/MasakiyoS/Desktop/ProgramingExercise/3/3-A4/ejwords.dat
+#define PATH "/home/lecture/hi-3proen/ejwords.dat"
+#define PATH_MAC "/Users/MasakiyoS/Desktop/ProgramingExercise/3/3-A4/ejwords.dat"
 #define WORDLEN 20
 
 void shuffle(int *, int);
@@ -23,25 +23,35 @@ void swap(int *, int, int, int);
 int main(int argc, const char * argv[]) {
     // insert code here...
     FILE *fp;
-    int *data, i = 0;
+    int i = 0, j;
     char word[20], **jp_word, **en_word;
     srand((unsigned int)time(NULL));
     
-    if((fp = fopen("PATH_MAC", "r")) == NULL){
-        printf("ファイルが開けませんでした");
-        fclose(fp);
+    /*ファイルを開く*/
+    if((fp = fopen(PATH_MAC, "r")) == NULL){
+        printf("ファイルが開けませんでした\n");
         exit(9);
     }
     
-    while(fscanf(fp, "%s", word))
+    /*文字数をカウント*/
+    while(fscanf(fp, "%s", word) != EOF)
         i++;
     
     /*Wordのメモリ確保*/
-    en_word[20] = (char *)malloc(sizeof(char) * (i/2));
-    en_word[20] = (char *)malloc(sizeof(char) * (i/2));
+    en_word = (char **)malloc(sizeof(char) * WORDLEN);
+    jp_word = (char **)malloc(sizeof(char) * WORDLEN);
+    for (j = 0; j < WORDLEN; j++) {
+        en_word[j] = (char *)malloc(sizeof(char) * i/2);
+        jp_word[j] = (char *)malloc(sizeof(char) * i/2);
+    }
+
     
-    printf("データの数:%d", i/2);
+      printf("データの数:%d", i/2);
     
+    for (j = 0 ; j < WORDLEN ; j++) {
+        free(en_word[j]);
+        free(jp_word[j]);
+    }
     free(en_word);
     free(jp_word);
     fclose(fp);
