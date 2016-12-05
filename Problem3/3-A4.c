@@ -23,13 +23,13 @@ void swap(int *, int, int, int);
 int main(int argc, const char * argv[]) {
     // insert code here...
     FILE *fp;
-    int count, i, j;
+    int count = 0, i, j;
     char **jp_word, **en_word;
-    char c, ch[50];
+    char c, w_en[50], w_jp[50];
     srand((unsigned int)time(NULL));
     
     /*ファイルを開く*/
-    if((fp = fopen(PATH_MAC, "r")) == NULL){
+    if((fp = fopen(PATH, "r")) == NULL){
         printf("ファイルが開けませんでした\n");
         exit(9);
     }
@@ -49,17 +49,18 @@ int main(int argc, const char * argv[]) {
     
     //strcpy(en_word[3], "aaaaaa");
     //strcpy(jp_word[3], "bbbbb");
+    i = 0;
     
-    for (i = 0; i < count; i++){
-        fgets(ch, WORDLEN, fp);
-        //printf("%s", ch);
-        //fscanf(fp, "%s%s", en_word[i], jp_word[i]);
+    while(fscanf(fp, "%s%s", w_en, w_jp) != EOF){
+        strcpy(jp_word[i], w_en);
+        strcpy(en_word[i], w_jp);
+        i ++;
     }
     
-    //for (i = 0; i < count; i++) {
-        printf("%s", en_word[2]);
-        printf("%s", jp_word[2]);
-    //}
+    for (i = 0; i < count; i++) {
+        printf("%s\t", en_word[i]);
+        printf("%s\n", jp_word[i]);
+    }
     
     printf("データの数:%d\n", count);
     for (i = 0; i < count; i++) {
