@@ -14,8 +14,8 @@
 #include <string.h>
 
 #define PATH "/home/lecture/hi-3proen/ejwords.dat"
-#define PATH_MAC "/Users/MasakiyoS/Desktop/ProgramingExercise/3/3-A4/ejwords.dat"
-#define WORDLEN 20
+#define PATH_MAC "/Users/MasakiyoS/Desktop/ProgramingExercise/3/3-A4/ejwords.txt"
+#define WORDLEN 50
 
 void shuffle(int *, int);
 void swap(int *, int, int, int);
@@ -23,9 +23,9 @@ void swap(int *, int, int, int);
 int main(int argc, const char * argv[]) {
     // insert code here...
     FILE *fp;
-    int i = 0, j;
-    char (*jp_word)[WORDLEN], (*en_word)[WORDLEN];
-    char word[20];
+    int count, i, j;
+    char **jp_word, **en_word;
+    char c, ch[50];
     srand((unsigned int)time(NULL));
     
     /*ファイルを開く*/
@@ -34,17 +34,38 @@ int main(int argc, const char * argv[]) {
         exit(9);
     }
     
-    /*文字数をカウント*/
-    while(fscanf(fp, "%s", word) != EOF)
-        i++;
+    /*行数をカウント*/
+    while((c = fgetc(fp)) != EOF)
+        if(c == '\n')
+            count ++;
     
     /*Wordのメモリ確保*/
-    en_word = (char (*)[WORDLEN])malloc(i/2 * WORDLEN);
-    jp_word = (char (*)[WORDLEN])malloc(i/2 * WORDLEN);
-
+    en_word = (char**)malloc(sizeof(char*) * count);
+    jp_word = (char**)malloc(sizeof(char*) * count);
+    for (i=0;i<count;i++){
+        jp_word[i] = (char*)malloc(sizeof(char) * WORDLEN);
+        en_word[i] = (char*)malloc(sizeof(char) * WORDLEN);
+    }
     
-      printf("データの数:%d", i/2);
+    //strcpy(en_word[3], "aaaaaa");
+    //strcpy(jp_word[3], "bbbbb");
     
+    for (i = 0; i < count; i++){
+        fgets(ch, WORDLEN, fp);
+        //printf("%s", ch);
+        //fscanf(fp, "%s%s", en_word[i], jp_word[i]);
+    }
+    
+    //for (i = 0; i < count; i++) {
+        printf("%s", en_word[2]);
+        printf("%s", jp_word[2]);
+    //}
+    
+    printf("データの数:%d\n", count);
+    for (i = 0; i < count; i++) {
+        free(en_word[i]);
+        free(jp_word[i]);
+    }
     free(en_word);
     free(jp_word);
     fclose(fp);
@@ -52,25 +73,25 @@ int main(int argc, const char * argv[]) {
     return 0;
 }
 /*
-void shuffle(int *data, int len){
-    int i, j;
-    
-    for(i = (len-1); 0 < i; i --){
-        j = rand()%(i+1);
-        swap(data, len, i, j);
-    }
-}
-
-void swap(int *data, int len, int x, int y){
-    if(x < 0 || y < 0 || x > len-1 || y > len-1){
-        puts("範囲外の要素を参照しようとしました.交換できません.");
-        return;
-    }
-    
-    int buff;
-    buff = data[x];
-    data[x] = data[y];
-    data[y] = buff;
-}
-*/
+ void shuffle(int *data, int len){
+ int i, j;
+ 
+ for(i = (len-1); 0 < i; i --){
+ j = rand()%(i+1);
+ swap(data, len, i, j);
+ }
+ }
+ 
+ void swap(int *data, int len, int x, int y){
+ if(x < 0 || y < 0 || x > len-1 || y > len-1){
+ puts("範囲外の要素を参照しようとしました.交換できません.");
+ return;
+ }
+ 
+ int buff;
+ buff = data[x];
+ data[x] = data[y];
+ data[y] = buff;
+ }
+ */
 
