@@ -19,7 +19,7 @@
 
 void shuffle(int *, int);
 void swap(int *, int, int, int);
-int reSerect(int, int);
+int reSelect(int, int);
 double microtime();
 
 int main(int argc, const char * argv[]) {
