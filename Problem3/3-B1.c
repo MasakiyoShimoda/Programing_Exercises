@@ -1,6 +1,6 @@
 //
 //  main.c
-//  3-A4
+//  3-B1
 //
 //  Created by 下田将斉 on 2016/11/21.
 //  Copyright © 2016年 Masakiyo Shimoda. All rights reserved.
